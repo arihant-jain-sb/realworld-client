@@ -15,7 +15,12 @@ const Comment = props => {
         <Link
           to={`/@${comment.author.username}`}
           className="comment-author">
-          <img src={comment.author.image} className="comment-author-img" alt={comment.author.username} />
+          <img
+            src={comment.author.image || 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'}
+            className="comment-author-img"
+            alt={comment.author.username}
+            onError={e => { e.target.onerror = null; e.target.src = 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'; }}
+          />
         </Link>
         &nbsp;
         <Link

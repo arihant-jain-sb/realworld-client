@@ -41,9 +41,10 @@ class CommentInput extends React.Component {
         </div>
         <div className="card-footer">
           <img
-            src={this.props.currentUser.image}
+            src={this.props.currentUser && this.props.currentUser.image ? this.props.currentUser.image : 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'}
             className="comment-author-img"
-            alt={this.props.currentUser.username} />
+            alt={this.props.currentUser ? this.props.currentUser.username : 'User'}
+            onError={e => { e.target.onerror = null; e.target.src = 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'; }} />
           <button
             className="btn btn-sm btn-primary"
             type="submit">

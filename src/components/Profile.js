@@ -125,7 +125,12 @@ class Profile extends React.Component {
             <div className="row">
               <div className="col-xs-12 col-md-10 offset-md-1">
 
-                <img src={profile.image} className="user-img" alt={profile.username} />
+                <img
+                  src={profile.image || 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'}
+                  className="user-img"
+                  alt={profile.username}
+                  onError={e => { e.target.onerror = null; e.target.src = 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'; }}
+                />
                 <h4>{profile.username}</h4>
                 <p>{profile.bio}</p>
 

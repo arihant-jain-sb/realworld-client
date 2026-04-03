@@ -37,7 +37,11 @@ const ArticlePreview = props => {
     <div className="article-preview">
       <div className="article-meta">
         <Link to={`/@${article.author.username}`}>
-          <img src={article.author.image} alt={article.author.username} />
+          <img
+            src={article.author.image || 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'}
+            alt={article.author.username}
+            onError={e => { e.target.onerror = null; e.target.src = 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'; }}
+          />
         </Link>
 
         <div className="info">

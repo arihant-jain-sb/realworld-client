@@ -57,7 +57,12 @@ const LoggedInView = props => {
           <Link
             to={`/@${props.currentUser.username}`}
             className="nav-link">
-            <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
+            <img
+                src={props.currentUser.image || 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'}
+                className="user-pic"
+                alt={props.currentUser.username}
+                onError={e => { e.target.onerror = null; e.target.src = 'https://img.freepik.com/free-vector/user-circles-set_78370-4704.jpg'; }}
+              />
             {props.currentUser.username}
           </Link>
         </li>
