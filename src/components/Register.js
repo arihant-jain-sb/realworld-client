@@ -46,6 +46,10 @@ class Register extends React.Component {
     const email = this.props.email;
     const password = this.props.password;
     const username = this.props.username;
+    let emailError = '';
+    if (email && !email.endsWith('@gmail.com')) {
+      emailError = 'Only gmail.com email addresses are allowed.';
+    }
 
     return (
       <div className="auth-page">
@@ -61,8 +65,19 @@ class Register extends React.Component {
               </p>
 
               <ListErrors errors={this.props.errors} />
+                {emailError && (
+                  <ul className="error-messages">
+                    <li>{emailError}</li>
+                  </ul>
+                )}
 
-              <form onSubmit={this.submitForm(username, email, password)}>
+              <form onSubmit={e => {
+                  if (email && !email.endsWith('@gmail.com')) {
+                    e.preventDefault();
+                    return;
+                  }
+                  this.submitForm(username, email, password)(e);
+                }}>
                 <fieldset>
 
                   <fieldset className="form-group">
