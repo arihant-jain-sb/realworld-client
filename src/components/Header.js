@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Avatar from './Avatar';
 
 const LoggedOutView = props => {
   if (!props.currentUser) {
@@ -57,8 +58,7 @@ const LoggedInView = props => {
           <Link
             to={`/@${props.currentUser.username}`}
             className="nav-link">
-            import Avatar from './Avatar';
-...
+            
 <Avatar image={props.currentUser.image} username={props.currentUser.username} size={26} alt={props.currentUser.username} />
             {props.currentUser.username}
           </Link>

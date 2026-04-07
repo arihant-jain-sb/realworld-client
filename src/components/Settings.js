@@ -1,5 +1,6 @@
 import ListErrors from './ListErrors';
 import React from 'react';
+import Avatar from './Avatar';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import {
@@ -66,6 +67,7 @@ class SettingsForm extends React.Component {
         <fieldset>
 
           <fieldset className="form-group">
+            <Avatar image={this.state.image} username={this.state.username} size={64} alt={this.state.username} />
             <input
               className="form-control"
               type="text"
