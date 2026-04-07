@@ -1,0 +1,45 @@
+.avatar-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--avatar-bg, #ececec);
+  color: var(--avatar-fg, #555);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+.avatar-img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.avatar-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--avatar-fallback-bg, #bdbdbd);
+  color: var(--avatar-fallback-fg, #fff);
+  font-size: 1.1em;
+  border-radius: 50%;
+  user-select: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .avatar-wrapper {
+    background: var(--avatar-bg-dark, #222);
+    color: var(--avatar-fg-dark, #eee);
+    box-shadow: 0 0 0 1px #444;
+  }
+  .avatar-fallback {
+    background: var(--avatar-fallback-bg-dark, #444);
+    color: var(--avatar-fallback-fg-dark, #fff);
+  }
+}

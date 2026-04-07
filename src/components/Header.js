@@ -57,7 +57,9 @@ const LoggedInView = props => {
           <Link
             to={`/@${props.currentUser.username}`}
             className="nav-link">
-            <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
+            import Avatar from './Avatar';
+...
+<Avatar image={props.currentUser.image} username={props.currentUser.username} size={26} alt={props.currentUser.username} />
             {props.currentUser.username}
           </Link>
         </li>
