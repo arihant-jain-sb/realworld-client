@@ -26,8 +26,9 @@ export default (state = {}, action) => {
       return {
         ...state,
         inProgress: null,
-        errors: action.error ? action.payload.errors : null
+        errors: action.error ? (action.payload && action.payload.errors ? action.payload.errors : { submission: ["Article submission failed. Please try again."] }) : null
       };
+
     case ASYNC_START:
       if (action.subtype === ARTICLE_SUBMITTED) {
         return { ...state, inProgress: true };

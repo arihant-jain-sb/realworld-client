@@ -37,8 +37,12 @@ export default (state = defaultState, action) => {
     case LOGOUT:
       return { ...state, redirectTo: '/', token: null, currentUser: null };
     case ARTICLE_SUBMITTED:
+      if (action.error || !action.payload || !action.payload.article || !action.payload.article.slug) {
+        // Defensive: do not redirect, optionally set an error state
+        return { ...state, redirectTo: null, articleSubmitError: (action.payload && action.payload.errors && action.payload.errors.submission) ? action.payload.errors.submission[0] : 'Article submission failed. Please try again.' };
+      }
       const redirectUrl = `/article/${action.payload.article.slug}`;
-      return { ...state, redirectTo: redirectUrl };
+      return { ...state, redirectTo: redirectUrl, articleSubmitError: null };
     case SETTINGS_SAVED:
       return {
         ...state,

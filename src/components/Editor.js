@@ -22,8 +22,14 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: EDITOR_PAGE_LOADED, payload }),
   onRemoveTag: tag =>
     dispatch({ type: REMOVE_TAG, tag }),
-  onSubmit: payload =>
-    dispatch({ type: ARTICLE_SUBMITTED, payload }),
+  onSubmit: async payloadPromise => {
+    try {
+      const payload = await payloadPromise;
+      dispatch({ type: ARTICLE_SUBMITTED, payload });
+    } catch (error) {
+      dispatch({ type: ARTICLE_SUBMITTED, error: true, payload: error.response && error.response.body ? error.response.body : { errors: { submission: ["Article submission failed. Please try again."] } } });
+    }
+  },
   onUnload: payload =>
     dispatch({ type: EDITOR_PAGE_UNLOADED }),
   onUpdateField: (key, value) =>
@@ -98,7 +104,7 @@ class Editor extends React.Component {
           <div className="row">
             <div className="col-md-10 offset-md-1 col-xs-12">
 
-              <ListErrors errors={this.props.errors}></ListErrors>
+              <ListErrors errors={this.props.errors || (this.props.articleSubmitError ? { submission: [this.props.articleSubmitError] } : null)}></ListErrors>
 
               <form>
                 <fieldset>
