@@ -784,6 +784,21 @@ fieldset[disabled] a.btn {
 
 /* Navbar */
 .navbar {
+
+/* Extra spacing for navbar profile section */
+}
+.navbar-nav .nav-item.settings-link {
+  margin-right: 20px;
+}
+.navbar-nav .nav-item.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navbar-nav .nav-item.profile-link .avatar-wrapper {
+  margin-right: 10px;
+}
+
   position: relative;
   padding: 0.5rem 1rem;
 }

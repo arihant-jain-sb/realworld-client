@@ -48,19 +48,18 @@ const LoggedInView = props => {
           </Link>
         </li>
 
-        <li className="nav-item">
+        <li className="nav-item settings-link">
           <Link to="/settings" className="nav-link">
             <i className="ion-gear-a"></i>&nbsp;Settings
           </Link>
         </li>
 
-        <li className="nav-item">
+        <li className="nav-item profile-link">
           <Link
             to={`/@${props.currentUser.username}`}
             className="nav-link">
-            
-<Avatar image={props.currentUser.image} username={props.currentUser.username} size={26} alt={props.currentUser.username} />
-            {props.currentUser.username}
+            <Avatar image={props.currentUser.image} username={props.currentUser.username} size={26} alt={props.currentUser.username} />
+            <span>{props.currentUser.username}</span>
           </Link>
         </li>
 
